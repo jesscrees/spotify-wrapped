@@ -72,11 +72,29 @@ export async function getUserProfile(accessToken: string) {
   return response
 }
 
-export async function getTopTracks(accessToken: string) {
+export async function getTopArtists(accessToken: string) {
   // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
+
+  // time frames can be: long_term, medium_term, short_term
+  // limit: 0 -50
+  // this data can be paginated
+
   const response = await getSpotifyData(
     accessToken,
-    'v1/me/top/tracks?time_range=short_term&limit=5'
+    'v1/me/top/artists?time_range=short_term&limit=5'
+  )
+  return response
+}
+export async function getTopTracks(accessToken: string, timeRange: string) {
+  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
+
+  // time frames can be: long_term, medium_term, short_term
+  // limit: 0 -50
+  // this data can be paginated
+
+  const response = await getSpotifyData(
+    accessToken,
+    `v1/me/top/tracks?time_range=${timeRange}&limit=5`
   )
   return response
 }

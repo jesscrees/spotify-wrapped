@@ -14,4 +14,4 @@ Your up-to-date Spotify wrapped all year around
 - What you listened to in the morning, afternoon. and evening
 - can we find out other people's listening habits so we can compare?
 - ability to share your results with people
-
+- get a random genre you haven't listened to recently

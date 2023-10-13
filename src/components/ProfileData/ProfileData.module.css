@@ -1,5 +1,23 @@
 .profileData {
+  align-items: center;
+  background-color: purple;
+  border-radius: 10rem;
+  box-shadow: var(--box-shadow);
+  -webkit-box-shadow: var(--box-shadow);
+  -moz-box-shadow: var(--box-shadow);
+  cursor: pointer;
   display: flex;
   flex-direction: row;
-  gap: 3rem;
+  gap: 2rem;
+  padding: 1.5rem 4rem 1.5rem 2rem;
+  transition: transform .2s ease-in-out;
+  width: fit-content;
+}
+
+.profileData:hover {
+  transform: scale(1.05);
+}
+
+.profileData img {
+  border-radius: 5rem;
 }

@@ -6,10 +6,10 @@ function ProfileData({ data }: { data: UserProfileData }) {
     <section className={styles.profileData}>
       <Image
         alt="Profile pic of user"
-        height={data.images[1].height}
+        height={100}
         priority
         src={data.images[1].url}
-        width={data.images[1].width}
+        width={100}
       />
 
       <h1>{data.display_name}</h1>

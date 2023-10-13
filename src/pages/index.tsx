@@ -11,6 +11,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const [spotifyAccessToken, setSpotifyAccessToken] = useState('');
   const [profileData, setProfileData] = useState(null);
   const [topTracks, setTopTracks] = useState(null);
   
@@ -36,13 +37,22 @@ export default function Home() {
           const accessToken = await res;
 
           if (accessToken) {
+            setSpotifyAccessToken(accessToken)
             // Get data using access token
             const profileData = await getUserProfile(accessToken)
             setProfileData(profileData)
   
-            const topTracksData = await getTopTracks(accessToken);
+            // will also return popularity for those tracks
+            // which we can collect together
+            const topTracksData = await getTopTracks(accessToken, 'short_term');
             setTopTracks(topTracksData)
-            console.log('topTracksData', topTracksData)
+
+             // will also return genres & popularity for those artists
+            // which we can collect together
+
+            // Get Tracks' Audio Features
+            // this will get us cool stuff like 'danceability'
+            // we can send an array of 100 track IDs
           } else {
             // Authorise with Spotify
             redirectToAuthCodeFlow()

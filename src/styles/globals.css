@@ -1,6 +1,8 @@
 :root {
-  --background-rgb: 0, 0, 0;
+  --background-rgb: 50, 50, 50;
   --foreground-rgb: 255, 255, 255;
+
+  --box-shadow: 8px 7px 17px 2px rgba(0,0,0,0.75);
 
   --hover-transtion: 0.1s all ease-in-out;
   --hover-color-change: brightness(85%);
