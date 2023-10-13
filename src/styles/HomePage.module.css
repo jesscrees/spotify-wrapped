@@ -1,0 +1,9 @@
+section.wrapper {
+  padding: 3rem;
+}
+
+section.wrapper section.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}

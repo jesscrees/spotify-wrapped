@@ -26,11 +26,21 @@ export async function redirectToAuthCodeFlow() {
 
   localStorage.setItem('verifier', verifier)
 
+  const scope = [
+    'user-read-currently-playing', // currently playing
+    'user-read-playback-state', // currently playing content & connected devices
+    'user-follow-read', // currently followed artists/users
+    'user-top-read', // user's top artists and tracks
+    'user-read-recently-played', // recently played items
+    'user-read-email', // user's email address
+    'user-read-private', // user's subscription details
+  ]
+
   const params = new URLSearchParams()
   params.append('client_id', process.env.NEXT_PUBLIC_CLIENT_ID!)
   params.append('response_type', 'code')
   params.append('redirect_uri', process.env.NEXT_PUBLIC_REDIRECT_URI!)
-  params.append('scope', 'user-read-private user-read-email user-top-read')
+  params.append('scope', scope.join(' '))
   params.append('code_challenge_method', 'S256')
   params.append('code_challenge', challenge)
 

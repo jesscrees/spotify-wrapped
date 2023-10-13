@@ -1,12 +1,18 @@
+import ProfileData from "@/components/ProfileData/ProfileData";
+import TopTracks from "@/components/TopTracks/TopTracks";
 import { getAccessToken, getTopTracks, getUserProfile, redirectToAuthCodeFlow } from "@/helpers";
 import { useEffect, useState } from 'react';
+
+import styles from '../styles/HomePage.module.css'
 
 let didInit = false;
 
 export default function Home() {
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const [profileData, setProfileData] = useState(null);
+  const [topTracks, setTopTracks] = useState(null);
   
   // use useEffect to load data after the first render
   useEffect(() => {
@@ -32,17 +38,15 @@ export default function Home() {
           if (accessToken) {
             // Get data using access token
             const profileData = await getUserProfile(accessToken)
-            console.log('profileData', profileData)
-            setData(profileData)
+            setProfileData(profileData)
   
             const topTracksData = await getTopTracks(accessToken);
+            setTopTracks(topTracksData)
             console.log('topTracksData', topTracksData)
           } else {
             // Authorise with Spotify
             redirectToAuthCodeFlow()
           }
-
-
         })
         .catch((e) => {
           // set the error if there's an error like 404, 400, etc
@@ -65,16 +69,17 @@ export default function Home() {
   const errorComponent = <div>Error: {error}</div>;
 
   return (
-    <section>
+    <section className={styles.wrapper}>
       {loading ? (
         loadingComponent
       ) : error ? (
         errorComponent
       ) : (
-        <div>
-          <p>Loading complete and no errors. Displaying data...</p>
-          <code>{JSON.stringify(data, null, 4)}</code>
-        </div>
+        <section className={styles.container}>
+          {profileData && <ProfileData data={profileData} />}
+
+          {topTracks && <TopTracks data={topTracks} />}
+        </section>
       )}
     </section>
   )
