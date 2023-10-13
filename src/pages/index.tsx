@@ -29,15 +29,19 @@ export default function Home() {
         getAccessToken(code).then(async (res) => {
           const accessToken = await res;
 
-          // TODO: Need to handle access token expiring when page is refreshed
-          
-          // Get data using access token
-          const profileData = await getUserProfile(accessToken)
-          console.log('profileData', profileData)
-          setData(profileData)
+          if (accessToken) {
+            // Get data using access token
+            const profileData = await getUserProfile(accessToken)
+            console.log('profileData', profileData)
+            setData(profileData)
+  
+            const topTracksData = await getTopTracks(accessToken);
+            console.log('topTracksData', topTracksData)
+          } else {
+            // Authorise with Spotify
+            redirectToAuthCodeFlow()
+          }
 
-          const topTracksData = await getTopTracks(accessToken);
-          console.log('topTracksData', topTracksData)
 
         })
         .catch((e) => {
