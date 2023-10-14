@@ -1,8 +1,12 @@
 # Spotify Wrapped
 Your up-to-date Spotify wrapped all year around
 
+## Features
+- User profile name and image
+- Top 5 tracks you listened to in the past 4 weeks
+
 ## Features to be Added
-- Connect a user to Spotify and get back their listening history
+- Make Top Tracks design responsive
 - Top 100 most listened to songs of the past year
 - The first song and first new artist you listened to in 2021
 - How many minutes you spent listening to things on Spotify
@@ -12,6 +16,6 @@ Your up-to-date Spotify wrapped all year around
 - Most listened to artists
 - Most repeated songs
 - What you listened to in the morning, afternoon. and evening
-- can we find out other people's listening habits so we can compare?
-- ability to share your results with people
-- get a random genre you haven't listened to recently
+- Can we find out other people's listening habits so we can compare?
+- Ability to share your results with people
+- Get a random song in a random genre you haven't listened to recently
