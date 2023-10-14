@@ -5,7 +5,7 @@ function ProfileData({ data }: { data: UserProfileData }) {
   return (
     <section className={styles.profileData}>
       <Image
-        alt="Profile pic of user"
+        alt={`Spotify profile image for ${data.display_name}`}
         height={100}
         priority
         src={data.images[1].url}
